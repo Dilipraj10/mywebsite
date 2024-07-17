@@ -8,5 +8,5 @@ import com.mywebsite.gaming.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
-	Optional<User> findByUserId(String userId);
+	Optional<User> findByGmail(String gmail);
 }

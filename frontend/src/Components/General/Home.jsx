@@ -10,7 +10,7 @@ function Home() {
         <Card.Text>
         Welcome to your gateway to the gaming world! Dive into the realm of endless entertainment where you can download the latest games and embark on thrilling adventures right from the comfort of your screen. Whether you're into action-packed battles, mind-bending puzzles, or immersive storytelling, our gaming website has something for every player. Get ready to unleash your gaming prowess and explore a universe filled with excitement and challenges. Start your first gaming experience here and let the fun begin!
         </Card.Text>
-        <Card.Text>Last updated 3 mins ago</Card.Text>
+        <Card.Text>Lets Rock</Card.Text>
       </Card.ImgOverlay>
     </Card>
   );

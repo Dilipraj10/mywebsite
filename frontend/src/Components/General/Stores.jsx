@@ -1,14 +1,14 @@
 import React from 'react'
 import NavbarUi from './Navbar'
 import Footer from './Footer'
-import StoreGrids from './StoreGrids'
+import GameCards from './GameCards'
 
 export default function Stores() {
   return (
     <div>
         <>
         <NavbarUi/>
-        <StoreGrids/>
+        <GameCards/>
         <Footer/>
         </>
     </div>

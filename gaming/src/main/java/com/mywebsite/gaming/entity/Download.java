@@ -1,15 +1,13 @@
 package com.mywebsite.gaming.entity;
 
-import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,22 +20,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
-public class User {
+public class Download {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	private Integer downloadId;
+		
+	@JoinColumn(name = "gamil")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private User user;
 	
-	@NotNull
-	private String username;
-	
-	@NotNull
-	private String gmail;
-	
-	@NotNull
-	private String password;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
-	private List<Download> downloads;
-	
+	@JoinColumn(name = "game_name")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Game game;
+
 }

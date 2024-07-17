@@ -6,7 +6,7 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -90,24 +90,19 @@ const handleClick5 = () =>{
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link onClick={handleClick4} href="#features" style={{ color: 'white' }}>HOME</Nav.Link>
-            <Nav.Link onClick={handleClick5} href="#features" style={{ color: 'white' }}>STORE</Nav.Link>
+            <Nav.Link onClick={handleClick4} href="" style={{ color: 'white' }}>HOME</Nav.Link>
+            <Nav.Link onClick={handleClick5} href="" style={{ color: 'white' }}>STORE</Nav.Link>
             <NavDropdown title="CATEGORIES" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
+              <NavDropdown.Item href="" as={Link} to="/pcgames">PC GAMES</NavDropdown.Item>
+              <NavDropdown.Item href="" as={Link} to="/mobilegames">
+                MOBILE GAMES 
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#pricing" style={{ color: 'white' }}>CONTACT</Nav.Link>
             <Nav.Link onClick={handleClick3} href="#pricing" style={{ color: 'white' }}>FEEDBACK</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link onClick={handleClick2} href="#deets" style={{ color: 'white', marginLeft:'30px'}}>SIGNIN/SIGNUP</Nav.Link>
-            <Nav.Link onClick={handleClick} href="#deets" style={{ color: 'white', marginLeft:'30px'}}>ADMIN</Nav.Link>
+            <Nav.Link onClick={handleClick2} href="" style={{ color: 'white', marginLeft:'30px'}}>SIGNIN/SIGNUP</Nav.Link>
+            <Nav.Link onClick={handleClick} href="" style={{ color: 'white', marginLeft:'30px'}}>ADMIN</Nav.Link>
 
           </Nav>
         </Navbar.Collapse>
