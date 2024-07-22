@@ -40,5 +40,11 @@ public interface GamingService {
 	public List<FeedbackDto> getFeedback();
 
 	public String adminLogin(AdminDto dto);
+
+	public String updateUserPassword(UserDto dto);
+
+	public String updateAdminPassword(AdminDto dto);
+
+	public Integer incrementDownload(GameDto dto);
 		
 }

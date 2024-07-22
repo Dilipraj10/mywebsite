@@ -222,7 +222,7 @@ public class GamingServiceImp  implements GamingService{
 			
 		}
 		
-		throw new GamingException("Something went wrong");
+		throw new GamingException("User or game not present");
 	}
 
 //get downloads---------------------------------------------------------------------------------------------------------------------------	
@@ -309,6 +309,50 @@ public class GamingServiceImp  implements GamingService{
 			}
 		}
 		throw new GamingException("Invalid Gmail !");
+	}
+
+//user password update-------------------------------------------------------------------------------------------------------
+	
+	@Override
+	public String updateUserPassword(UserDto dto) {
+		Optional<User> optional = userRepository.findByGmail(dto.getGmail());
+		if(optional.isPresent()) {
+			User user = optional.get();
+			user.setPassword(dto.getPassword());
+			userRepository.save(user);
+			return "password upadted";
+		}
+		throw new GamingException("User not found");
+	}
+
+//admin password update------------------------------------------------------------------------------------------------------
+	
+	@Override
+	public String updateAdminPassword(AdminDto dto) {
+		Optional<Admin> optional = adminRepository.findByGmail(dto.getGmail());
+		if(optional.isPresent()) {
+			Admin admin = optional.get();
+			admin.setPassword(dto.getPassword());
+			adminRepository.save(admin);
+			return "password updated";
+		}
+		throw new GamingException("User not found");
+	}
+
+//increment download---------------------------------------------------------------------------------------------------------
+	
+	@Override
+	public Integer incrementDownload(GameDto dto) {
+		Optional<Game> optional = gameRepository.findByGameName(dto.getGameName());
+		if(optional.isPresent()) {
+			Game game = optional.get();
+			Integer totalDownload = game.getTotalDownloads(); 
+			Integer increment = totalDownload + 1;
+			
+			game.setTotalDownloads(increment);
+			return gameRepository.save(game).getTotalDownloads();
+		}
+		throw new GamingException("Game not found");
 	}
 	
 //----------------------------------------------------------------------------------------------------------------------------

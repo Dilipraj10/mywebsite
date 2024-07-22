@@ -9,8 +9,8 @@ import Form from 'react-bootstrap/Form'
 import axios from "axios";
 
 export default function FeedBack() {
-  const [name, setName] = React.useState("");
-  const [gmail, setGmail] = React.useState("");
+  const name = window.sessionStorage.getItem("name")
+  const gmail = window.sessionStorage.getItem("gmail")
   const [feedback, setFeedback] = React.useState("");
 
   console.log(name);
@@ -48,18 +48,15 @@ export default function FeedBack() {
           <Box sx={{ display: "flex", gap: "16px", marginBottom: "16px" }}>
             <TextField
               value={name}
-              onChange={(e) => setName(e.target.value)
-              }
-              helperText="Please enter your name"
               id="name"
               label="Name"
+              disabled
             />
             <TextField
               value={gmail}
-              onChange={(e) => setGmail(e.target.value)}
-              helperText="Please enter your Gmail"
               id="email"
               label="Gmail"
+              disabled
             />
           </Box>
           <TextField
@@ -78,7 +75,7 @@ export default function FeedBack() {
         </Box>
       </Container>
       </Form>
-      <div style={{marginTop:"111px"}}>
+      <div style={{marginTop:"134px"}}>
         <Footer />
       </div>
     </>

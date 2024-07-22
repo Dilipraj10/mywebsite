@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
+
 @RestController
 @RequestMapping("/api/gaming")
 @CrossOrigin
@@ -92,6 +93,19 @@ public class GamingController {
 						.build());
 	}
 	
+//update user password-------------------------------------------------------------------------------------------------------
+	
+	@PutMapping(path = "/userpasswordupdate")
+	public ResponseEntity<CommonResponse<String>> putMethodName(@RequestBody UserDto dto) {
+		String password = gamingService.updateUserPassword(dto);
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+				.body(CommonResponse.<String>builder()
+						.data(password)
+						.error(false)
+						.message("password updated")
+						.build());
+	}
+	
 //Add game--------------------------------------------------------------------------------------------------------------------------
 
 	@PostMapping(path = "/addgame")
@@ -132,6 +146,18 @@ public class GamingController {
 							.data(upadte)
 							.error(false)
 							.message("Game updated")
+							.build());
+		}
+		
+//increment game download-----------------------------------------------------------------------------------------------------
+		
+		@PutMapping(path = "incrementdownload")
+		public ResponseEntity<CommonResponse<String>> incrementDownload(@RequestBody GameDto dto) {
+			Integer increment = gamingService.incrementDownload(dto);
+			return ResponseEntity.status(HttpStatus.ACCEPTED)
+					.body(CommonResponse.<String>builder()
+							.error(false)
+							.message("total download incremented")
 							.build());
 		}
 		
@@ -223,6 +249,19 @@ public class GamingController {
 						.data(admin)
 						.error(false)
 						.message("login successful!")
+						.build());
+	}
+	
+//Admin password upadate------------------------------------------------------------------------------------------------------
+
+	@PutMapping(path = "adminpasswordupdate")
+	public ResponseEntity<CommonResponse<String>> putMethodName(@RequestBody AdminDto dto) {
+		String password = gamingService.updateAdminPassword(dto);
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+				.body(CommonResponse.<String>builder()
+						.data(password)
+						.error(false)
+						.message("password updated")
 						.build());
 	}
 	

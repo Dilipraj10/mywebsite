@@ -10,8 +10,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
-  borderRadius: theme.shape.borderRadius, // Add border-radius
-  backgroundColor: 'white', // Set background color to white
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: 'white', 
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
@@ -51,13 +51,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function NavbarUi() {
 
-  const navigate = useNavigate();
-  const handleClick = () =>{
-         navigate('/Admin');
-        }
+  const name = window.sessionStorage.getItem("name");
 
- const handleClick2 = () =>{
-         navigate('/LoginUser');
+  const navigate = useNavigate();
+
+  const handleClick = () =>{
+        window.sessionStorage.clear();
+         navigate('/');
         }
 
 const handleClick3 = () =>{
@@ -65,19 +65,17 @@ const handleClick3 = () =>{
         }
 
 const handleClick4 = () =>{
-          navigate('/');
+          navigate('/main');
          }
 
 const handleClick5 = () =>{
           navigate('/Store');
          }
 
-
-
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container style={{ height: "90px" }}>
-        <Navbar.Brand href="#home">DANIEL DILIP GAMING</Navbar.Brand>
+        <Navbar.Brand href="#home">GAME STORE</Navbar.Brand>
         <Search>
           <SearchIconWrapper>
             <SearchIcon />
@@ -101,9 +99,8 @@ const handleClick5 = () =>{
             <Nav.Link onClick={handleClick3} href="#pricing" style={{ color: 'white' }}>FEEDBACK</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link onClick={handleClick2} href="" style={{ color: 'white', marginLeft:'30px'}}>SIGNIN/SIGNUP</Nav.Link>
-            <Nav.Link onClick={handleClick} href="" style={{ color: 'white', marginLeft:'30px'}}>ADMIN</Nav.Link>
-
+            <Nav.Link href="" style={{ color: 'white', marginLeft:'30px'}}>WELCOME <span style={{color:"Lightgreen", textTransform:"uppercase"}}>{name}</span></Nav.Link>
+            <Nav.Link onClick={handleClick} href="" style={{ color: 'white', marginLeft:'30px'}}>LOGOUT</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
