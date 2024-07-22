@@ -32,13 +32,23 @@ const GameCards = () => {
       });
   };
 
-  const handleDownload = () =>{
-    if(name === null && gmail === null){
-      alert("Please Login");
-      navigate("/LoginUser");
-    }
+  const handleDownload = (gameName) =>{
+    axios.post("http://localhost:8080/api/gaming/downloadgames",{gameName, gmail})
+    .then(res => {
+      console.log(res.data.message);
+      axios.put("http://localhost:8080/api/gaming/incrementdownload",{gameName})
+      .then(ress => {
+        console.log(ress.data.message);
+      })
+      .catch(errr => {
+        console.log(errr);
+      })
+    })
+    .catch(err => {
+      console.log(err);
+      alert("Something went wrong")
+    })
   }
-
   return (
     <div
       style={{
@@ -87,7 +97,7 @@ const GameCards = () => {
               <Button size="small">
                 <FavoriteBorderIcon />
               </Button>
-              <Button size="small" onClick={handleDownload}>Download</Button>
+              <Button size="small" onClick={() => {handleDownload(game.gameName)}}>Download</Button>
             </CardActions>
           </Box>
         </Card>
