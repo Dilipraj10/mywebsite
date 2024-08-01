@@ -43,7 +43,7 @@ public class GamingController {
 	@PostMapping(path = "/adduser")
 	ResponseEntity<CommonResponse<String>> addUser(@Valid @RequestBody UserDto dto) {
 		String user = gamingService.addUser(dto);
-		return ResponseEntity.status(HttpStatus.ACCEPTED)
+		return ResponseEntity.status(HttpStatus.ACCEPTED)	
 				.body(CommonResponse.<String>builder()
 						.data(user)
 						.error(false)
